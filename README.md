@@ -33,6 +33,21 @@ end
 ```
 Rails中，可以新建`config/initializers/xmppserver.rb`
 
+* Rails项目中的使用
+新建`config/initializers/xmppserver.rb`文件
+```
+require 'drb/drb'
+SERVER_URI="druby://localhost:8787"  
+DRb.start_service  
+XMPPSERVER = DRbObject.new_with_uri(SERVER_URI)  
+
+XmppServer::Config.config do |s|
+	x.username = "zhangsan"
+	x.password = "xxxxxx"
+	x.server   = "test.com"
+end
+```
+
 ###需要实现
 * 一个将配置文件复制到initializers目录的generator
 * 启动xmpp server 中转站的 task[start, stop , restart]
