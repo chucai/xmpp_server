@@ -4,7 +4,10 @@ require "xmpp_server/config"
 require "xmpp_server/queue"
 require "xmpp_server/push"
 
+require "xmpp_server/railtie" if defined?(Rails)
+
 module XmppServer
+
 
 	def self.config
 		yield self

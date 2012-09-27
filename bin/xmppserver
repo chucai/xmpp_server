@@ -6,7 +6,7 @@ $:.unshift(XMPP_PATH)
 require "drb/drb"
 require "xmpp_server"
 
-URI = "druby://localhost:8787"
+DRB_URI = "druby://localhost:8787"
 client = XmppServer::Client.get_default_client
 
 consumer = Thread.new {  
@@ -17,5 +17,5 @@ consumer = Thread.new {
 } 
 
 FRONT_OBJECT = XmppServer::Pusher.new
-DRb.start_service(URI, FRONT_OBJECT)  
+DRb.start_service(DRB_URI, FRONT_OBJECT)  
 DRb.thread.join 
