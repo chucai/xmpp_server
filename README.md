@@ -6,6 +6,10 @@
 ```shell
 ./bin/xmppserver
 ```
+rake启动
+```ruby
+rake xmppserver:start
+```
 
 * 客户端code
 ```ruby
