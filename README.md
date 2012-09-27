@@ -26,9 +26,9 @@ end
 * 修改服务器地址,用户名和密码
 ```ruby
 XmppServer::Config.config do |s|
-	x.username = "zhangsan"
-	x.password = "xxxxxx"
-	x.server   = "test.com"
+	s.username = "zhangsan"
+	s.password = "xxxxxx"
+	s.server   = "test.com"
 end
 ```
 Rails中，可以新建`config/initializers/xmppserver.rb`
@@ -41,9 +41,9 @@ SERVER_URI="druby://localhost:8787"
 DRb.start_service  
 XMPPSERVER = DRbObject.new_with_uri(SERVER_URI)  
 XmppServer::Config.config do |s|
-	x.username = "zhangsan"
-	x.password = "xxxxxx"
-	x.server   = "test.com"
+	s.username = "zhangsan"
+	s.password = "xxxxxx"
+	s.server   = "test.com"
 end
 ```
 
