@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+
+XMPP_PATH = File.expand_path("../../lib", __FILE__)
+$:.unshift(XMPP_PATH)
+
+require "drb/drb"
+require "xmpp_server"
+
+URI = "druby://localhost:8787"
+client = XmppServer::Client.get_default_client
+
+consumer = Thread.new {  
+	loop {  
+	  m = XmppServer::QUEUE.pop
+		client.push m
+	}  
+} 
+
+FRONT_OBJECT = XmppServer::Pusher.new
+DRb.start_service(URI, FRONT_OBJECT)  
+DRb.thread.join 

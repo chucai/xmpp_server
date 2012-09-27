@@ -11,7 +11,7 @@ module XmppServer
 		attr_accessor :jid, :password
 
 		def initialize(jid, password)
-		  @jid      = jid
+			@jid      = jid
 			@password = password
 			@client   = Jabber::Client.new @jid 
 		end
@@ -28,6 +28,17 @@ module XmppServer
 			to = "#{m.username}@#{XmppServer::Config.server}/nickname"
 			msg = Jabber::Message::new(to, m.content).set_type(:normal).set_id(1)
 			@client.send msg
+		end
+
+		class << self
+			def get_default_client
+				jid      = "#{XmppServer::Config.username}@#{XmppServer::Config::server}/pusher"
+				password = XmppServer::Config.password
+				client   = XmppServer::Client.new(jid, password)
+				client.connect
+				client.auth
+				client
+			end
 		end
 	end
 end

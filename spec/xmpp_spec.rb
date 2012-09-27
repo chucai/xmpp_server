@@ -13,4 +13,10 @@ describe "push messgae to client" do
 		client.push m
 	end
 
+	it "default should could push message" do
+		m      = XmppServer::M.new("tester002", "hello, world. default push")
+		client = XmppServer::Client.get_default_client
+		client.push m
+	end
+
 end
