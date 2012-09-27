@@ -35,12 +35,11 @@ Rails中，可以新建`config/initializers/xmppserver.rb`
 
 * Rails项目中的使用
 新建`config/initializers/xmppserver.rb`文件
-```
+```ruby
 require 'drb/drb'
 SERVER_URI="druby://localhost:8787"  
 DRb.start_service  
 XMPPSERVER = DRbObject.new_with_uri(SERVER_URI)  
-
 XmppServer::Config.config do |s|
 	x.username = "zhangsan"
 	x.password = "xxxxxx"
