@@ -19,6 +19,16 @@ xmppserver = DRbObject.new_with_uri(SERVER_URI)
 end  
 ```
 
+*修改服务器地址,用户名和密码
+```ruby
+XmppServer::Config.config do |s|
+	x.username = "zhangsan"
+	x.password = "xxxxxx"
+	x.server   = "test.com"
+end
+```
+Rails中，可以新建`config/initializers/xmppserver.rb`
+
 ###需要实现
 * 一个将配置文件复制到initializers目录的generator
 * 启动xmpp server 中转站的 task[start, stop , restart]

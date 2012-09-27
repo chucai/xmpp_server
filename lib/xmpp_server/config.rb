@@ -11,6 +11,22 @@ module XmppServer
 			def server; @@server ;end
 			def username; @@username; end
 			def password; @@password; end
+
+			def server=(server)
+				@@server = server
+			end
+
+			def username=(username)
+				@@username = username
+			end
+
+			def password=(password)
+				@@password = password
+			end
+
+			def config
+				yield self
+			end
 		end
 	end
 

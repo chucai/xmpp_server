@@ -6,6 +6,10 @@ require "xmpp_server/push"
 
 module XmppServer
 
+	def self.config
+		yield self
+	end
+
 	#xmpp client to push connect and push message to xmpp server
 	class Client
 		attr_accessor :jid, :password
