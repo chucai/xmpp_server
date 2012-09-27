@@ -19,7 +19,7 @@ xmppserver = DRbObject.new_with_uri(SERVER_URI)
 end  
 ```
 
-*修改服务器地址,用户名和密码
+* 修改服务器地址,用户名和密码
 ```ruby
 XmppServer::Config.config do |s|
 	x.username = "zhangsan"
