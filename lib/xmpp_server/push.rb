@@ -6,6 +6,7 @@ module XmppServer
 			def push(username, content)
 				m = XmppServer::M.new(username, content)
 				XmppServer::QUEUE.push m
+				return nil  #from : http://ruby-china.org/topics/5550
 			end
 	end
 

@@ -15,7 +15,6 @@ rake xmppserver:start
 ```ruby
 require 'drb/drb'
 SERVER_URI="druby://localhost:8787"  
-DRb.start_service  
 xmppserver = DRbObject.new_with_uri(SERVER_URI)  
 3.times do |i| 
 	xmppserver.push("tester002", "testdddeeee....")
@@ -38,7 +37,6 @@ Rails中，可以新建`config/initializers/xmppserver.rb`
 ```ruby
 require 'drb/drb'
 SERVER_URI="druby://localhost:8787"  
-DRb.start_service  
 XMPPSERVER = DRbObject.new_with_uri(SERVER_URI)  
 XmppServer::Config.config do |s|
 	s.username = "zhangsan"
@@ -46,9 +44,3 @@ XmppServer::Config.config do |s|
 	s.server   = "test.com"
 end
 ```
-
-###需要实现
-* 一个将配置文件复制到initializers目录的generator
-* 启动xmpp server 中转站的 task[start, stop , restart]
-* 需要充分的测试
-
